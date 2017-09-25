@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Day_3_of_Code {
     public class Car {
@@ -21,6 +17,11 @@ namespace Day_3_of_Code {
         double mpg = 26.4;
 
         int numberOfPeopleInCar = 1;
+        int maxnumberOfPeapleInCar = 6;
+
+        public Car() {
+
+        }
 
         public Car(int customMaxSpeed, double customWeight, bool customIsTheCarOn) {
             maxSpeed = customMaxSpeed;
@@ -44,13 +45,23 @@ namespace Day_3_of_Code {
         }
 
         public void getIn() {
-            //numberOfPeopleInCar = numberOfPeopleInCar + 1;
-            numberOfPeopleInCar++;
+            if (numberOfPeopleInCar < maxnumberOfPeapleInCar) {
+                numberOfPeopleInCar++;
+                Console.WriteLine("Someone got in!");
+            }
+            else {
+                Console.WriteLine("Car is full: " + numberOfPeopleInCar + " = " + maxnumberOfPeapleInCar);
+            }
         }
 
         public void getOut() {
-            //numberOfPeopleInCar = numberOfPeopleInCar - 1;
-            numberOfPeopleInCar--;
+            if (numberOfPeopleInCar > 0) {
+                numberOfPeopleInCar--;
+                Console.WriteLine("Someone got out!");
+            }
+            else {
+                Console.WriteLine("Car is empty: " + numberOfPeopleInCar + " = 0");
+            }
         }
 
         public double howManyMilesTillOutOfGas() {
@@ -59,6 +70,17 @@ namespace Day_3_of_Code {
 
         public double maxMilesPerFillUp() {
             return maxFuel * mpg;
+        }
+
+        public void turnCarOnOffToggle() {
+            if (!isTheCarOn) {
+                isTheCarOn = true;
+                Console.WriteLine("The car was off and now turned on!");
+            }
+            else {
+                isTheCarOn = false;
+                Console.WriteLine("The car was on and now turned off!");
+            }
         }
     }
 }
